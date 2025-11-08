@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <p className="text-2xl text-blue-400 text-center">FinTrack</p>
+      <p className="text-2xl bg-base-200 text-center">FinTrack</p>
     </>
   );
 }
