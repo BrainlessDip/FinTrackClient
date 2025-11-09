@@ -27,7 +27,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/feedback"} className="text-[20px]">
+        <NavLink to={"/add-transaction"} className="text-[20px]">
           Add Transaction
         </NavLink>
       </li>
