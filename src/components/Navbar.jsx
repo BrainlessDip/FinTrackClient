@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
-import Container from "./Container";
 
 const Navbar = () => {
   const { user, handleSignout } = useContext(AuthContext);
@@ -91,7 +90,15 @@ const Navbar = () => {
                   {user.photoURL ? (
                     <img src={user.photoURL} />
                   ) : (
-                    <img src="https://img.icons8.com/?size=100&id=fUUEbUbXhzOA&format=png&color=ffffff" />
+                    <img
+                      src={`https://img.icons8.com/?size=100&id=fUUEbUbXhzOA&format=png&color=${
+                        theme ? "ffffff" : "000000"
+                      }`}
+                      alt="profile avatar"
+                      width={100}
+                      height={100}
+                      draggable={false}
+                    />
                   )}
                 </div>
               </div>

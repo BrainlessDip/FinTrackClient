@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { AuthContext } from "../contexts/AuthContext.jsx";
+import useAxios from "../hooks/useAxios.js";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -17,11 +18,13 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const emailRef = useRef();
+  const api = useAxios(true);
 
   const handleSignin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
+      await api.post("/check", { email: result.user.email });
       setUser(user);
       navigate("/");
     } catch (error) {
@@ -52,6 +55,7 @@ const Login = () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       setUser(result.user);
+      await api.post("/check", { email: result.user.email });
       navigate("/");
     } catch (error) {
       switch (error.code) {
@@ -116,24 +120,15 @@ const Login = () => {
                 {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
               </button>
             </div>
-
-            <p
-              onClick={() =>
-                navigate("/forget-password", {
-                  state: emailRef.current.value,
-                })
-              }
-              className="text-sm my-2 text-left cursor-pointer text-blue-600 hover:text-blue-800 "
-            >
-              <span className="font-semibold">Forgot Password ?</span>
-            </p>
-            <button className="btn btn-neutral mt-0 w-full">Login</button>
-            <p
-              onClick={() => navigate("/register")}
-              className="mt-1 text-[16px] text-center cursor-pointer text-blue-600 hover:text-blue-800 "
-            >
+            <button className="btn btn-neutral mt-4 w-full">Login</button>
+            <p className="mt-1 text-[16px] text-center text-blue-600 ">
               Don’t have an account?{" "}
-              <span className="font-semibold">Register now</span>
+              <span
+                className="font-semibold hover:text-blue-800 cursor-pointer"
+                onClick={() => navigate("/register")}
+              >
+                Register now
+              </span>
             </p>
           </form>
           <div className="flex justify-around items-center mt-2">

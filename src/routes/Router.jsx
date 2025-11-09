@@ -4,6 +4,8 @@ import App from "./../App";
 import Login from "../pages/Login";
 import Loading from "../components/Loading";
 import PrivateRoute from "./PrivateRoute";
+import Register from "../pages/Register";
+import AddTransaction from "../pages/AddTransaction";
 
 export const router = createBrowserRouter([
   {
@@ -19,13 +21,17 @@ export const router = createBrowserRouter([
         path: "/add-transaction",
         element: (
           <PrivateRoute>
-            <h1>hi</h1>
+            <AddTransaction></AddTransaction>
           </PrivateRoute>
         ),
       },
       {
         path: "/login",
         Component: Login,
+      },
+      {
+        path: "/register",
+        Component: Register,
       },
     ],
   },
