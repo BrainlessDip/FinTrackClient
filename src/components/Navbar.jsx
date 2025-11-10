@@ -31,7 +31,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/feedback"} className="text-[20px]">
+        <NavLink to={"/my-transactions"} className="text-[20px]">
           My Transactions
         </NavLink>
       </li>

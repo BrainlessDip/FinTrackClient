@@ -7,6 +7,7 @@ import PrivateRoute from "./PrivateRoute";
 import Register from "../pages/Register";
 import AddTransaction from "../pages/AddTransaction";
 import Home from "../pages/Home";
+import MyTransactions from "../pages/MyTransactions";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddTransaction></AddTransaction>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-transactions",
+        element: (
+          <PrivateRoute>
+            <MyTransactions></MyTransactions>
           </PrivateRoute>
         ),
       },
