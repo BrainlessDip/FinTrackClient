@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
-  const { user, handleSignout } = useContext(AuthContext);
-  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem("dark")));
+  const { user, handleSignout, theme, setTheme } = useContext(AuthContext);
 
   const handleTheme = (isChecked) => {
     setTheme(isChecked);

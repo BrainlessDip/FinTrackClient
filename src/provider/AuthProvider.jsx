@@ -16,6 +16,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem("dark")));
   const [loading, setLoading] = useState(true);
   const api = useAxios();
 
@@ -124,6 +125,8 @@ const AuthProvider = ({ children }) => {
     handleSignout,
     handleRegister,
     handleSignin,
+    theme,
+    setTheme,
   };
   return <AuthContext value={value}>{children}</AuthContext>;
 };

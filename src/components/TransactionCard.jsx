@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router";
 
-const TransactionCard = ({ transaction }) => {
+const TransactionCard = ({ transaction, deleteTransaction }) => {
   const typeColor =
     transaction.type === "income"
       ? "bg-green-100 text-green-800"
@@ -34,8 +35,16 @@ const TransactionCard = ({ transaction }) => {
       </p>
 
       <div className="mt-3 flex justify-center items-center gap-5">
-        <button className="btn btn-outline btn-primary btn-sm">Update</button>
-        <button className="btn btn-outline btn-error btn-sm hover:text-white">
+        <Link
+          to={`/update-transaction/${transaction._id}`}
+          className="btn btn-outline btn-primary btn-sm"
+        >
+          Update
+        </Link>
+        <button
+          className="btn btn-outline btn-error btn-sm hover:text-white"
+          onClick={deleteTransaction}
+        >
           Delete
         </button>
         <button className="btn btn-outline btn-primary btn-sm hover:text-white">
