@@ -15,8 +15,6 @@ const AddTransaction = () => {
     const amount = e.target.amount.value;
     const description = e.target.description.value;
     const date = e.target.date.value;
-    const email = e.target.email.value;
-    const name = e.target.name.value;
 
     if (!["income", "expense"].includes(type)) {
       toast.error("Please select a valid type: Income or Expense");
@@ -33,8 +31,6 @@ const AddTransaction = () => {
       amount,
       description,
       date,
-      email,
-      name,
     };
 
     toast.promise(api.post("/add-transaction", data), {
