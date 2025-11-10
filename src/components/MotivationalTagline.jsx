@@ -25,7 +25,7 @@ const MotivationalTagline = () => {
   }, []);
 
   return (
-    <div className="w-11/12 mx-auto mt-10 p-6 rounded-2xl dark:text-white text-black text-center">
+    <div className="w-11/12 mx-auto p-2 rounded-2xl dark:text-white text-black text-center">
       <p className="text-xl italic leading-relaxed mb-4">“{quote.quote}”</p>
     </div>
   );

@@ -8,9 +8,9 @@ const BudgetingTips = () => {
       </h2>
       <div className="w-28 h-1 mx-auto mt-1 bg-linear-to-r from-blue-500 via-cyan-500 to-blue-700 dark:from-purple-400 dark:via-pink-400 dark:to-orange-300 rounded-full shadow-md"></div>
 
-      <div className="flex justify-center items-center font-medium gap-20 mt-5">
+      <div className="flex justify-center items-start flex-col md:flex-row font-medium gap-2 md:gap-20 mt-5 p-2">
         <div>
-          <ul className="list-disc">
+          <ul className="list-disc text-left space-y-2 ml-5">
             <li>Track your expenses</li>
             <li>Set realistic goals</li>
             <li>Create a monthly spending plan</li>
@@ -24,7 +24,7 @@ const BudgetingTips = () => {
           </ul>
         </div>
         <div>
-          <ul className="list-disc">
+          <ul className="list-disc text-left space-y-2 ml-5">
             <li>Set a fixed percentage of income for savings each month</li>
             <li>Use budgeting apps to visualize your spending</li>
             <li>Review your budget after major life or income changes</li>

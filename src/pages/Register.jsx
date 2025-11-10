@@ -47,7 +47,7 @@ const Register = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center flex-col relative min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-74px)]">
+    <div className="flex  bg-base-300 justify-center items-center flex-col relative min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-74px)]">
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
         <legend className="fieldset-legend text-4xl">Register</legend>
         <form onSubmit={registerUser}>
