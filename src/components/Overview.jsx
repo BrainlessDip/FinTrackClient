@@ -7,7 +7,7 @@ const Overview = () => {
   const [data, setData] = useState({
     balance: "...",
     income: "...",
-    expenses: "...",
+    expense: "...",
   });
 
   useEffect(() => {
