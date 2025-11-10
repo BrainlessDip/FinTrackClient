@@ -47,9 +47,12 @@ const TransactionCard = ({ transaction, deleteTransaction }) => {
         >
           Delete
         </button>
-        <button className="btn btn-outline btn-primary btn-sm hover:text-white">
+        <Link
+          to={`/my-transactions/${transaction._id}`}
+          className="btn btn-outline btn-primary btn-sm hover:text-white"
+        >
           Details
-        </button>
+        </Link>
       </div>
     </div>
   );

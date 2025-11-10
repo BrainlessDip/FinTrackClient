@@ -9,6 +9,7 @@ import AddTransaction from "../pages/AddTransaction";
 import Home from "../pages/Home";
 import MyTransactions from "../pages/MyTransactions";
 import UpdateTransaction from "../pages/UpdateTransaction";
+import TransactionDetails from "../pages/TransactionDetails";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyTransactions />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-transactions/:id",
+        element: (
+          <PrivateRoute>
+            <TransactionDetails />
           </PrivateRoute>
         ),
       },
