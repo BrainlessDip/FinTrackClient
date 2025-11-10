@@ -31,7 +31,7 @@ const Overview = () => {
       <div className="flex flex-col md:flex-row justify-center items-center mt-10 gap-10">
         <Card value={data.balance} name="Balance" />
         <Card value={data.income} name="Income" />
-        <Card value={data.expenses} name="Expenses" />
+        <Card value={data.expense} name="Expenses" />
       </div>
     </section>
   );

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "./../hooks/useAxiosSecure";
 
 const AddTransaction = () => {
   const { user } = useAuth();
+  const api = useAxiosSecure();
 
   const [costType, setCostType] = useState("");
-  const handleAddTransaction = (e) => {
+  const handleAddTransaction = async (e) => {
     e.preventDefault();
     const type = e.target.type.value;
     const category = e.target.category.value;
@@ -15,16 +17,6 @@ const AddTransaction = () => {
     const date = e.target.date.value;
     const email = e.target.email.value;
     const name = e.target.name.value;
-
-    console.log({
-      type,
-      category,
-      amount,
-      description,
-      date,
-      email,
-      name,
-    });
 
     if (!["income", "expense"].includes(type)) {
       toast.error("Please select a valid type: Income or Expense");
@@ -35,6 +27,32 @@ const AddTransaction = () => {
       toast.error("Please select a valid category");
       return;
     }
+    const data = {
+      type,
+      category,
+      amount,
+      description,
+      date,
+      email,
+      name,
+    };
+
+    toast.promise(api.post("/add-transaction", data), {
+      pending: "Adding your transaction...",
+      success: {
+        render({ data }) {
+          return data?.data?.message;
+        },
+      },
+      error: {
+        render({ data }) {
+          return (
+            data?.response?.data?.error ||
+            "Failed to add transaction. Please try again!"
+          );
+        },
+      },
+    });
   };
   return (
     <div className="bg-base-300">
