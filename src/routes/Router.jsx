@@ -6,6 +6,7 @@ import Loading from "../components/Loading";
 import PrivateRoute from "./PrivateRoute";
 import Register from "../pages/Register";
 import AddTransaction from "../pages/AddTransaction";
+import Home from "../pages/Home";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: App,
+        Component: Home,
       },
       {
         path: "/add-transaction",

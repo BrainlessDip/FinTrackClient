@@ -147,6 +147,9 @@ const Navbar = () => {
                   </label>
                   <a className="justify-between font-bold">{user.email}</a>
                   <li>
+                    <a className="justify-between text-2xl">My Profile</a>
+                  </li>
+                  <li>
                     <a
                       className="justify-between text-2xl"
                       onClick={() => {
