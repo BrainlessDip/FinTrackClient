@@ -11,6 +11,8 @@ import MyTransactions from "../pages/MyTransactions";
 import UpdateTransaction from "../pages/UpdateTransaction";
 import TransactionDetails from "../pages/TransactionDetails";
 import MyProfile from "../pages/MyProfile";
+import Reports from "../pages/Reports";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/reports",
+        element: (
+          <PrivateRoute>
+            <Reports />
           </PrivateRoute>
         ),
       },
@@ -71,5 +81,9 @@ export const router = createBrowserRouter([
         Component: Register,
       },
     ],
+  },
+  {
+    path: "*",
+    Component: NotFound,
   },
 ]);
