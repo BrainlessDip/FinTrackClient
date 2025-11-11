@@ -69,7 +69,7 @@ const TransactionDetails = () => {
           ID: {data._id}
         </div>
         <div className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
-          Category Total: {data.category_total}
+          Category Total: ${data.category_total}
         </div>
       </div>
       <div className="max-w-sm mx-auto bg-white dark:bg-[#1d232a] rounded-2xl shadow-lg p-6 text-gray-800 dark:text-gray-200 mt-5">

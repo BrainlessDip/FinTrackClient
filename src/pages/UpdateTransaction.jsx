@@ -165,21 +165,6 @@ const UpdateTransaction = () => {
               className="input"
             />
 
-            <input
-              type="email"
-              name="email"
-              defaultValue={data?.email}
-              className="input"
-              readOnly
-            />
-            <input
-              type="email"
-              name="name"
-              defaultValue={data?.name || undefined}
-              className="input"
-              readOnly
-            />
-
             <button className="btn btn-neutral mt-4 w-full">
               Update Transaction
             </button>
