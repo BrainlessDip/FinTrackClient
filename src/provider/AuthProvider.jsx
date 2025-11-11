@@ -6,11 +6,10 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import auth from "../firebase/firebase.init";
 import { toast } from "react-toastify";
 import { AuthContext } from "./../contexts/AuthContext";
-import useAxios from "./../hooks/useAxios";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -18,7 +17,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [theme, setTheme] = useState(JSON.parse(localStorage.getItem("dark")));
   const [loading, setLoading] = useState(true);
-  const api = useAxios();
 
   const handleSignout = () => {
     signOut(auth)
@@ -48,8 +46,6 @@ const AuthProvider = ({ children }) => {
         displayName,
         photoURL,
       });
-      const x = await api.post("/check", { email: result.user.email });
-      console.log(x);
       toast.success("🎉 Your account has been successfully created!");
       return result;
     } catch (error) {
@@ -82,7 +78,6 @@ const AuthProvider = ({ children }) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      await api.post("/check", { email: result.user.email });
       setUser(user);
       return result;
     } catch (error) {

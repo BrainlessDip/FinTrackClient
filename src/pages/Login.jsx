@@ -9,7 +9,6 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { AuthContext } from "../contexts/AuthContext.jsx";
-import useAxios from "../hooks/useAxios.js";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -18,13 +17,11 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const emailRef = useRef();
-  const api = useAxios(true);
 
   const handleSignin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      await api.post("/check", { email: result.user.email });
       setUser(user);
       navigate("/");
     } catch (error) {
@@ -55,7 +52,6 @@ const Login = () => {
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       setUser(result.user);
-      await api.post("/check", { email: result.user.email });
       navigate("/");
     } catch (error) {
       switch (error.code) {
