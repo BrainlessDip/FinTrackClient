@@ -15,8 +15,7 @@ const MyTransactions = () => {
     let txns = [...data];
 
     if (sort === "date") {
-      const x = txns.sort((a, b) => new Date(b.date) - new Date(a.date));
-      console.log(x);
+      txns.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else if (sort === "amount") {
       txns.sort((a, b) => Number(b.amount) - Number(a.amount));
     }
