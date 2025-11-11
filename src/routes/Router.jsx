@@ -10,6 +10,7 @@ import Home from "../pages/Home";
 import MyTransactions from "../pages/MyTransactions";
 import UpdateTransaction from "../pages/UpdateTransaction";
 import TransactionDetails from "../pages/TransactionDetails";
+import MyProfile from "../pages/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddTransaction />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <MyProfile />
           </PrivateRoute>
         ),
       },

@@ -31,7 +31,8 @@ const TransactionCard = ({ transaction, deleteTransaction }) => {
         </span>
       </div>
       <p className="text-black dark:text-white text-2xl">
-        {transaction.description}
+        {transaction.description.slice(0, 40)}
+        {transaction.description.length >= 40 ? "..." : ""}
       </p>
 
       <div className="mt-3 flex justify-center items-center gap-5">

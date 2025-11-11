@@ -16,7 +16,7 @@ const UpdateTransaction = () => {
   useEffect(() => {
     const getTransactions = async () => {
       try {
-        const res = await api.get(`/my-transactions/${id}`);
+        const res = await api.get(`/transaction/${id}`);
         setData(res.data);
         setCostType(res.data.type);
         setLoading(false);
@@ -52,7 +52,7 @@ const UpdateTransaction = () => {
       date,
     };
 
-    toast.promise(api.patch(`/update-transaction/${id}`, data), {
+    toast.promise(api.patch(`/transaction/${id}`, data), {
       pending: "Updating your transaction...",
       success: {
         render({ data }) {

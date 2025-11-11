@@ -24,7 +24,7 @@ const MyTransactions = () => {
 
     if (!result.isConfirmed) return;
 
-    const res = await toast.promise(api.delete(`/my-transactions/${id}`), {
+    const res = await toast.promise(api.delete(`/transaction/${id}`), {
       pending: "Deleting your transaction...",
       success: {
         render({ data }) {
@@ -63,7 +63,7 @@ const MyTransactions = () => {
         My Transaction
       </h1>
 
-      <div className="grid grid-cols-5 gap-6 p-7">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-7">
         {data.map((transaction) => (
           <TransactionCard
             transaction={transaction}

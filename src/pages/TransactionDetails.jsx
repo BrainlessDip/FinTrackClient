@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useParams } from "react-router";
 import Loading from "../components/Loading";
@@ -12,7 +12,7 @@ const TransactionDetails = () => {
   useEffect(() => {
     const getDetails = async () => {
       try {
-        const res = await api.get(`/my-transactions/${id}`);
+        const res = await api.get(`/transaction/${id}`);
         setData(res.data);
         setLoading(false);
       } catch (err) {
@@ -27,7 +27,7 @@ const TransactionDetails = () => {
 
   return (
     <div className="bg-base-300 h-screen px-4">
-      <h1 className="mx-auto text-4xl pt-5 border-b-2 border-blue-500 w-fit">
+      <h1 className="mx-auto text-3xl sm:text-4xl pt-5 border-b-2 border-blue-500 w-fit">
         Transaction Details
       </h1>
       <div className="max-w-sm mx-auto bg-white dark:bg-[#1d232a] rounded-2xl shadow-lg p-6 text-gray-800 dark:text-gray-200 mt-5">
@@ -60,10 +60,6 @@ const TransactionDetails = () => {
             </span>
           </div>
           <div className="flex justify-between">
-            <span className="font-medium">Description</span>
-            <span>{data.description}</span>
-          </div>
-          <div className="flex justify-between">
             <span className="font-medium">Date</span>
             <span>{new Date(data.date).toLocaleDateString()}</span>
           </div>
@@ -72,6 +68,13 @@ const TransactionDetails = () => {
         <div className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
           ID: {data._id}
         </div>
+        <div className="mt-4 text-center text-xs text-gray-400 dark:text-gray-500">
+          Category Total: {data.category_total}
+        </div>
+      </div>
+      <div className="max-w-sm mx-auto bg-white dark:bg-[#1d232a] rounded-2xl shadow-lg p-6 text-gray-800 dark:text-gray-200 mt-5">
+        <p className="text-center font-bold">Description</p>
+        <span>{data.description}</span>
       </div>
     </div>
   );
