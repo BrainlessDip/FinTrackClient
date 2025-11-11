@@ -8,7 +8,21 @@ import useAuth from "../hooks/useAuth";
 const MyTransactions = () => {
   const api = useAxiosSecure();
   const [data, setData] = useState([]);
+  const [sort, setSort] = useState("");
   const { theme } = useAuth();
+
+  useEffect(() => {
+    let txns = [...data];
+
+    if (sort === "date") {
+      const x = txns.sort((a, b) => new Date(b.date) - new Date(a.date));
+      console.log(x);
+    } else if (sort === "amount") {
+      txns.sort((a, b) => Number(b.amount) - Number(a.amount));
+    }
+
+    setData(txns);
+  }, [sort]);
 
   const deleteTransaction = async (id) => {
     const result = await Swal.fire({
@@ -59,9 +73,36 @@ const MyTransactions = () => {
 
   return (
     <div className="bg-base-300 h-screen">
-      <h1 className="mx-auto text-4xl pt-5 border-b-2 border-blue-500 w-fit">
-        My Transaction
-      </h1>
+      <div className="flex justify-center items-center gap-5 flex-col">
+        <h1 className="mx-auto text-4xl pt-5 border-b-2 border-blue-500 w-fit">
+          My Transaction
+        </h1>
+        <select
+          defaultValue=""
+          className="select select-success border py-2 rounded-sm border-[#d2d2d2] bg-white"
+        >
+          <option value="" disabled>
+            Sort by...
+          </option>
+          <option
+            value="date"
+            onClick={() => {
+              setSort("date");
+            }}
+          >
+            Sort by date
+          </option>
+          <option
+            value="amount"
+            onClick={() => {
+              setSort("amount");
+            }}
+          >
+            Sort by amount
+          </option>
+        </select>
+        <div></div>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-7">
         {data.map((transaction) => (
