@@ -4,11 +4,14 @@ import TransactionCard from "../components/TransactionCard";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import Loading from "../components/Loading";
 
 const MyTransactions = () => {
   const api = useAxiosSecure();
   const [data, setData] = useState([]);
   const [sort, setSort] = useState("");
+  const [loading, setLoading] = useState(true);
+
   const { theme } = useAuth();
 
   useEffect(() => {
@@ -63,12 +66,16 @@ const MyTransactions = () => {
       try {
         const res = await api.get("/my-transactions");
         setData(res.data);
+        setLoading(false);
       } catch (err) {
         setData([]);
+        setLoading(false);
       }
     };
     getTransactions();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="bg-base-300 h-screen">
@@ -78,7 +85,7 @@ const MyTransactions = () => {
         </h1>
         <select
           defaultValue=""
-          className="select select-success border py-2 rounded-sm border-[#d2d2d2] bg-white"
+          className="select select-success border py-2 rounded-sm border-[#d2d2d2] bg-base-100"
         >
           <option value="" disabled>
             Sort by...
