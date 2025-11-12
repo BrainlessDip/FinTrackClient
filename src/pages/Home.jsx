@@ -1,16 +1,16 @@
 import React from "react";
 import Overview from "../components/Overview";
 import useAuth from "./../hooks/useAuth";
-import MotivationalTagline from "../components/MotivationalTagline";
 import BudgetingTips from "../components/BudgetingTips";
 import FinancialPlanning from "../components/FinancialPlanning";
+import Carousel from "../components/Carousel";
 
 const Home = () => {
   const { user } = useAuth();
 
   return (
     <div className="bg-base-300">
-      <MotivationalTagline />
+      <Carousel />
       {user && <Overview />}
       <BudgetingTips />
       <FinancialPlanning />

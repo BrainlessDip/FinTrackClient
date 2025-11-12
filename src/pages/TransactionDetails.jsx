@@ -26,7 +26,7 @@ const TransactionDetails = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="bg-base-300 h-screen px-4">
+    <div className="bg-base-300 min-h-screen px-4">
       <h1 className="mx-auto text-3xl sm:text-4xl pt-5 border-b-2 border-blue-500 w-fit">
         Transaction Details
       </h1>
