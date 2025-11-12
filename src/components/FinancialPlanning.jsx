@@ -3,7 +3,7 @@ import React from "react";
 const FinancialPlanning = () => {
   return (
     <div>
-      <div className="flex flex-col items-center text-center my-12">
+      <div className="flex flex-col items-center text-center pb-5">
         <h2 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-blue-600 drop-shadow-lg text-center dark:text-white">
           Why Financial Planning Matters
         </h2>
