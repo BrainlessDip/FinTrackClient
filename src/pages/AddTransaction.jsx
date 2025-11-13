@@ -33,7 +33,7 @@ const AddTransaction = () => {
       date,
     };
 
-    toast.promise(api.post("/add-transaction", data), {
+    const res = await toast.promise(api.post("/add-transaction", data), {
       pending: "Adding your transaction...",
       success: {
         render({ data }) {
@@ -49,6 +49,9 @@ const AddTransaction = () => {
         },
       },
     });
+    if (res.status === 200) {
+      e.target.reset();
+    }
   };
   return (
     <div className="bg-base-300">

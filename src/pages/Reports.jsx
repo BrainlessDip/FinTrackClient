@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from "react";
 import FinancialSummary from "../components/FinancialSummary";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Loading from "./../components/Loading";
 
 const Reports = () => {
   const api = useAxiosSecure();
   const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getTransactions = async () => {
       try {
         const res = await api.get("/my-transactions");
         setTransactions(res.data);
+        setLoading(false);
       } catch (err) {
         setTransactions([]);
+        setLoading(false);
       }
     };
     getTransactions();
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="bg-base-300 min-h-screen">
