@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import Root from "../layout/Root";
-import App from "./../App";
+
 import Login from "../pages/Login";
 import Loading from "../components/Loading";
 import PrivateRoute from "./PrivateRoute";
@@ -14,7 +14,6 @@ import MyProfile from "../pages/MyProfile";
 import Reports from "../pages/Reports";
 import NotFound from "../pages/NotFound";
 import About from "../pages/About";
-import Contact from "../pages/Contact";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import Terms from "../pages/Terms";
 
@@ -87,10 +86,6 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         Component: About,
-      },
-      {
-        path: "/contact",
-        Component: Contact,
       },
       {
         path: "/privacy",
