@@ -10,32 +10,46 @@ const Footer = () => {
         <div className="flex space-x-8 justify-start items-start">
           <div>
             <h3 className="font-semibold mb-3">Company</h3>
-            <ul className="text-gray-400 text-sm flex flex-col gap-2">
-              <li className="text-black dark:text-white cursor-pointer">
-                About Us
+            <ul className="text-sm flex flex-col gap-2">
+              <li>
+                <a href="/about" className="text-black dark:text-white hover:underline">
+                  About Us
+                </a>
               </li>
-              <li className="text-black dark:text-white cursor-pointer">
-                Terms And Conditions
+              <li>
+                <a href="/terms" className="text-black dark:text-white hover:underline">
+                  Terms And Conditions
+                </a>
               </li>
-              <li className="text-black dark:text-white cursor-pointer">
-                Privacy Policy
+              <li>
+                <a href="/privacy" className="text-black dark:text-white hover:underline">
+                  Privacy Policy
+                </a>
               </li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold mb-3">Follow Us</h3>
-            <ul className="text-gray-400 text-sm flex flex-col gap-3">
-              <li className="flex items-center gap-2 text-black dark:text-white cursor-pointer">
-                <FaXTwitter /> @FinTrack
+            <ul className="text-sm flex flex-col gap-3">
+              <li>
+                <a href="https://twitter.com/FinTrack" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-black dark:text-white hover:underline">
+                  <FaXTwitter /> @FinTrack
+                </a>
               </li>
-              <li className="flex items-center gap-2 text-black dark:text-white cursor-pointer">
-                <FaLinkedin /> @FinTrack
+              <li>
+                <a href="https://linkedin.com/company/fintrack" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-black dark:text-white hover:underline">
+                  <FaLinkedin /> @FinTrack
+                </a>
               </li>
-              <li className="flex items-center gap-2 text-black dark:text-white cursor-pointer">
-                <FaFacebook /> @FinTrack
+              <li>
+                <a href="https://facebook.com/fintrack" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-black dark:text-white hover:underline">
+                  <FaFacebook /> @FinTrack
+                </a>
               </li>
-              <li className="flex items-center gap-2 text-black dark:text-white cursor-pointer">
-                <IoMailOutline /> admin@fintrack.com
+              <li>
+                <a href="mailto:admin@fintrack.com" className="flex items-center gap-2 text-black dark:text-white hover:underline">
+                  <IoMailOutline /> admin@fintrack.com
+                </a>
               </li>
             </ul>
           </div>
@@ -43,7 +57,7 @@ const Footer = () => {
       </div>
       <div className="border-t border-gray-700 opacity-50 my-8"></div>
       <p className="text-center text-black dark:text-white text-sm">
-        © 2025 FinTrack | All rights reserved
+        © {new Date().getFullYear()} FinTrack | All rights reserved
       </p>
     </footer>
   );

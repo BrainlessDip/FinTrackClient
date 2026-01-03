@@ -4,7 +4,7 @@ import TransactionCard from "../components/TransactionCard";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
-import Loading from "../components/Loading";
+import SkeletonCard from "../components/SkeletonCard";
 
 const MyTransactions = () => {
   const api = useAxiosSecure();
@@ -75,8 +75,6 @@ const MyTransactions = () => {
     getTransactions();
   }, []);
 
-  if (loading) return <Loading />;
-
   return (
     <div className="bg-base-300 min-h-screen">
       <div className="flex justify-center items-center gap-5 flex-col">
@@ -110,17 +108,31 @@ const MyTransactions = () => {
         <div></div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-7">
-        {data.map((transaction) => (
-          <TransactionCard
-            transaction={transaction}
-            key={transaction._id}
-            deleteTransaction={() => {
-              deleteTransaction(transaction._id);
-            }}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-7">
+          {[...Array(8)].map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-7">
+          {data.length > 0 ? (
+            data.map((transaction) => (
+              <TransactionCard
+                transaction={transaction}
+                key={transaction._id}
+                deleteTransaction={() => {
+                  deleteTransaction(transaction._id);
+                }}
+              />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-20 text-gray-500 dark:text-gray-400 text-lg">
+              No transactions found. Start adding some!
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
