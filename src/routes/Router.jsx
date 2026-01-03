@@ -13,6 +13,10 @@ import TransactionDetails from "../pages/TransactionDetails";
 import MyProfile from "../pages/MyProfile";
 import Reports from "../pages/Reports";
 import NotFound from "../pages/NotFound";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import Terms from "../pages/Terms";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +83,22 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+      {
+        path: "/about",
+        Component: About,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
+      },
+      {
+        path: "/privacy",
+        Component: PrivacyPolicy,
+      },
+      {
+        path: "/terms",
+        Component: Terms,
       },
     ],
   },
