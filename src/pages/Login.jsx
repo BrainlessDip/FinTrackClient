@@ -16,7 +16,48 @@ const Login = () => {
   const { setUser } = use(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const passwordRef = useRef();
   const emailRef = useRef();
+
+  const loginUser = async (email, password) => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      setUser(result.user);
+      navigate("/");
+    } catch (error) {
+      switch (error.code) {
+        case "auth/user-disabled":
+          toast.error(
+            "Your account has been disabled. Please contact support."
+          );
+          break;
+        case "auth/popup-closed-by-user":
+          toast.error("Sign-in cancelled. Please try again.");
+          break;
+        case "auth/network-request-failed":
+          toast.error("Network error. Check your connection and try again.");
+          break;
+        case "auth/invalid-credential":
+          toast.error(
+            "Invalid credentials provided. Please try again with correct login details."
+          );
+          break;
+        default:
+          toast.error("An unexpected error occurred. Please try again later.");
+          break;
+      }
+    }
+  };
+
+  const handleDemoLogin = () => {
+    const email = "admin@fintrack.com";
+    const password = "123456";
+
+    if (emailRef.current) emailRef.current.value = email;
+    if (passwordRef.current) passwordRef.current.value = password;
+
+    loginUser(email, password);
+  };
 
   const handleSignin = async () => {
     try {
@@ -46,36 +87,9 @@ const Login = () => {
 
   const handleEmailSignin = async (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
+    const email = emailRef.current.value;
     const password = e.target.password.value;
-
-    try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      setUser(result.user);
-      navigate("/");
-    } catch (error) {
-      switch (error.code) {
-        case "auth/user-disabled":
-          toast.error(
-            "Your account has been disabled. Please contact support."
-          );
-          break;
-        case "auth/popup-closed-by-user":
-          toast.error("Sign-in cancelled. Please try again.");
-          break;
-        case "auth/network-request-failed":
-          toast.error("Network error. Check your connection and try again.");
-          break;
-        case "auth/invalid-credential":
-          toast.error(
-            "Invalid credentials provided. Please try again with correct login details."
-          );
-          break;
-        default:
-          toast.error("An unexpected error occurred. Please try again later.");
-          break;
-      }
-    }
+    loginUser(email, password);
   };
 
   useEffect(() => {
@@ -106,6 +120,7 @@ const Login = () => {
                 placeholder="Password"
                 name="password"
                 autoComplete="current-password"
+                ref={passwordRef}
                 required
               />
               <button
@@ -127,6 +142,17 @@ const Login = () => {
               </span>
             </p>
           </form>
+
+          <div className="divider">OR</div>
+
+          <button
+            type="button"
+            className="btn btn-neutral w-full  "
+            onClick={handleDemoLogin}
+          >
+            Demo Login
+          </button>
+
           <div className="flex justify-around items-center mt-2">
             <button
               onClick={() => {
