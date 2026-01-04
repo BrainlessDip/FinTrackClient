@@ -36,7 +36,7 @@ const Carousel = () => {
 
   return (
     <div 
-      className="relative w-11/12 mx-auto group overflow-hidden rounded-4xl"
+      className="relative w-11/12 mx-auto group overflow-hidden rounded-4xl mt-8"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >

@@ -23,7 +23,7 @@ const Overview = () => {
   }, []);
 
   return (
-    <section>
+    <section className="py-16">
       <h2 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-blue-600 drop-shadow-lg text-center dark:text-white">
         Overview
       </h2>
