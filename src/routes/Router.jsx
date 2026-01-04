@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import Root from "../layout/Root";
+import DashboardLayout from "../layout/DashboardLayout";
 
 import Login from "../pages/Login";
 import Loading from "../components/Loading";
@@ -28,54 +29,6 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: "/add-transaction",
-        element: (
-          <PrivateRoute>
-            <AddTransaction />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/profile",
-        element: (
-          <PrivateRoute>
-            <MyProfile />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/reports",
-        element: (
-          <PrivateRoute>
-            <Reports />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/update-transaction/:id",
-        element: (
-          <PrivateRoute>
-            <UpdateTransaction />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/my-transactions",
-        element: (
-          <PrivateRoute>
-            <MyTransactions />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/my-transactions/:id",
-        element: (
-          <PrivateRoute>
-            <TransactionDetails />
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/login",
         Component: Login,
       },
@@ -94,6 +47,44 @@ export const router = createBrowserRouter([
       {
         path: "/terms",
         Component: Terms,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <MyTransactions />, // Setting this as default for now or create a DashboardHome
+      },
+      {
+        path: "add-transaction",
+        element: <AddTransaction />,
+      },
+      {
+        path: "my-transactions",
+        element: <MyTransactions />,
+      },
+      {
+        path: "my-transactions/:id",
+        element: <TransactionDetails />,
+      },
+      {
+        path: "update-transaction/:id",
+        element: <UpdateTransaction />,
+      },
+      {
+        path: "profile",
+        element: <MyProfile />,
+      },
+      {
+        path: "reports",
+        element: <Reports />,
       },
     ],
   },

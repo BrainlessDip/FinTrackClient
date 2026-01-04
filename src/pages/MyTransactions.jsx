@@ -125,8 +125,8 @@ const MyTransactions = () => {
   );
 
   return (
-    <div className="bg-base-300 min-h-screen pb-10">
-      <div className="flex flex-col items-center gap-6 pt-8 pb-4 px-4">
+    <div className="pb-10 w-full">
+      <div className="flex flex-col items-center gap-6 pb-8">
         <h1 className="text-4xl font-bold border-b-4 border-primary pb-2 text-base-content">
           My Transactions
         </h1>

@@ -19,6 +19,7 @@ const Navbar = () => {
 
   const links = (
     <>
+      {/* Public Links */}
       <li>
         <NavLink to={"/"} className="text-[20px]">
           Home
@@ -26,26 +27,15 @@ const Navbar = () => {
       </li>
 
       {user && (
-        <>
-          <li>
-            <NavLink to={"/add-transaction"} className="text-[20px]">
-              Add Transaction
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"/my-transactions"} className="text-[20px]">
-              My Transactions
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={"/reports"} className="text-[20px]">
-              Reports
-            </NavLink>
-          </li>
-        </>
+        <li>
+          <Link to={"/dashboard"} className="justify-between text-xl">
+            Dashboard
+          </Link>
+        </li>
       )}
     </>
   );
+
   return (
     <>
       <div className="sticky top-0 z-50 backdrop-blur-md bg-base-100/80">
@@ -157,7 +147,15 @@ const Navbar = () => {
                     <a className="justify-between font-bold">{user.email}</a>
                     <li>
                       <Link
-                        to={"/profile"}
+                        to={"/dashboard"}
+                        className="justify-between text-xl"
+                      >
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to={"/dashboard/profile"}
                         className="justify-between text-2xl"
                       >
                         My Profile

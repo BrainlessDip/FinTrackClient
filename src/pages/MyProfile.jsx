@@ -32,7 +32,7 @@ const MyProfile = () => {
   return (
     <>
       <div className="flex justify-center items-center flex-col gap-4 my-10">
-        <div className="bg-base-200 border-base-300 rounded-box rounded-3xl shadow-md w-xs border p-4 flex justify-between items-center flex-col gap-5">
+        <div className="bg-base-100 border-base-300 rounded-box rounded-3xl shadow-md w-xs border p-4 flex justify-between items-center flex-col gap-5">
           <img
             src={
               user.photoURL ||

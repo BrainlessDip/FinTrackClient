@@ -54,11 +54,11 @@ const AddTransaction = () => {
     }
   };
   return (
-    <div className="bg-base-300">
-      <h1 className="mx-auto text-4xl pt-5 border-b-2 border-blue-500 w-fit">
+    <div className="w-full h-full flex flex-col items-center justify-center p-4">
+      <h1 className="text-4xl pb-6 border-b-2 border-primary mb-8 text-center font-bold">
         Add Transaction
       </h1>
-      <div className="flex justify-center items-center flex-col relative min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-74px)]">
+      <div className="w-full max-w-md">
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
           <form onSubmit={handleAddTransaction} className="space-y-2">
             <select
